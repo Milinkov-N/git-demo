@@ -1,0 +1,6 @@
+[package]
+name = "git-demo"
+authors = ["Milinkov-N <milinkov.nik@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+
