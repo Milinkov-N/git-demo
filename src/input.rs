@@ -1,7 +1,7 @@
 pub fn line() -> String {
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
-    input
+    input.trim().to_owned()
 }
 
 pub fn number<T>() -> T
