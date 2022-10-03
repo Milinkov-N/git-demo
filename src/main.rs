@@ -2,6 +2,13 @@ use std::io::{self, Write};
 
 use git_demo::{arithmetic as arith, input};
 
+enum Op {
+    Add,
+    Sub,
+    Mul,
+    Div,
+}
+
 fn main() {
     print!("Enter your name: ");
     io::stdout().flush().unwrap();
@@ -18,26 +25,10 @@ fn main() {
     let operation: i32 = input::number();
 
     match operation {
-        1 => {
-            let (x, y) = numbers_input();
-
-            println!("{x} + {y} = {}", arith::add(x, y));
-        }
-        2 => {
-            let (x, y) = numbers_input();
-
-            println!("{x} - {y} = {}", arith::sub(x, y));
-        }
-        3 => {
-            let (x, y) = numbers_input();
-
-            println!("{x} * {y} = {}", arith::mul(x, y));
-        }
-        4 => {
-            let (x, y) = numbers_input();
-
-            println!("{x} / {y} = {}", arith::div(x, y));
-        }
+        1 => handle_operation(Op::Add),
+        2 => handle_operation(Op::Sub),
+        3 => handle_operation(Op::Mul),
+        4 => handle_operation(Op::Div),
         op => unreachable!("Unknown operation \"{op}\""),
     }
 }
@@ -52,4 +43,17 @@ fn numbers_input() -> (i32, i32) {
     let y: i32 = input::number();
 
     (x, y)
+}
+
+fn handle_operation(operation: Op) {
+    let (x, y) = numbers_input();
+
+    let result = match operation {
+        Op::Add => arith::add(x, y),
+        Op::Sub => arith::sub(x, y),
+        Op::Mul => arith::mul(x, y),
+        Op::Div => arith::div(x, y),
+    };
+
+    println!("{x} * {y} = {result}");
 }
