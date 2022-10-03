@@ -1,29 +1,20 @@
 use std::io::{self, Write};
 
-use git_demo::arithmetic as arith;
+use git_demo::{arithmetic as arith, input};
 
 fn main() {
-    let mut input = String::new();
-    let mut user_name = String::new();
-
     print!("Enter your name: ");
     io::stdout().flush().unwrap();
-    io::stdin().read_line(&mut user_name).unwrap();
 
-    println!("Hello, {}!", user_name.trim());
+    println!("Hello, {}!", input::line());
 
     print!("Enter first number: ");
     io::stdout().flush().unwrap();
-
-    io::stdin().read_line(&mut input).unwrap();
-    let x = input.trim().parse().unwrap_or(0);
-    input.clear();
+    let x: i32 = input::number();
 
     print!("Enter second number: ");
     io::stdout().flush().unwrap();
-
-    io::stdin().read_line(&mut input).unwrap();
-    let y = input.trim().parse().unwrap_or(0);
+    let y: i32 = input::number();
 
     println!("{x} + {y} = {}", arith::add(x, y));
 }
