@@ -1,3 +1,9 @@
+pub fn line() -> String {
+    let mut input = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    input
+}
+
 pub fn number<T>() -> T
 where
     T: std::str::FromStr + Default,
