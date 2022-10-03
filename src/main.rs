@@ -8,13 +8,30 @@ fn main() {
 
     println!("Hello, {}!", input::line());
 
-    print!("Enter first number: ");
-    io::stdout().flush().unwrap();
-    let x: i32 = input::number();
+    println!(
+        "Choose operation:{}{}{}{}",
+        "\n  1. Summation", "\n  2. Subdivision", "\n  3. Multiplication", "\n  4. Division"
+    );
 
-    print!("Enter second number: ");
+    print!("> ");
     io::stdout().flush().unwrap();
-    let y: i32 = input::number();
+    let operation: i32 = input::number();
 
-    println!("{x} + {y} = {}", arith::add(x, y));
+    match operation {
+        1 => {
+            print!("Enter first number: ");
+            io::stdout().flush().unwrap();
+            let x: i32 = input::number();
+
+            print!("Enter second number: ");
+            io::stdout().flush().unwrap();
+            let y: i32 = input::number();
+
+            println!("{x} + {y} = {}", arith::add(x, y));
+        }
+        2 => todo!(),
+        3 => todo!(),
+        4 => todo!(),
+        op => unreachable!("Unknown operation \"{op}\""),
+    }
 }
