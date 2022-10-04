@@ -13,7 +13,7 @@ fn main() {
     print!("Enter your name: ");
     io::stdout().flush().unwrap();
 
-    println!("Hello, {}!", input::line());
+    println!("Hello, {}!", input::line().unwrap());
 
     println!(
         "Choose operation:{}{}{}{}",
@@ -22,7 +22,7 @@ fn main() {
 
     print!("> ");
     io::stdout().flush().unwrap();
-    let operation: i32 = input::number();
+    let operation: i32 = input::number().unwrap();
 
     match operation {
         1 => handle_operation(Op::Add),
@@ -36,11 +36,11 @@ fn main() {
 fn numbers_input() -> (i32, i32) {
     print!("Enter first number: ");
     io::stdout().flush().unwrap();
-    let x: i32 = input::number();
+    let x: i32 = input::number().unwrap();
 
     print!("Enter second number: ");
     io::stdout().flush().unwrap();
-    let y: i32 = input::number();
+    let y: i32 = input::number().unwrap();
 
     (x, y)
 }
